@@ -1,0 +1,9 @@
+{% extends "index.html" %}
+{% block images %}
+    <img class="lightboxed" rel="group1" src="data:image/jpeg;base64, {{ request_image }}" width="256" height="256" data-caption="Input image"/>
+    {% for i in range(images|length) %}
+            <img class="lightboxed" rel="group1" src="data:image/jpeg;base64, {{ images[i] }} " width="256" height="256" data-caption="Output {{ i + 1 }}"/>
+    {% endfor %}
+
+	<div id="inline" style="display: none;"><div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: #fff;">Some inline content</div></div>
+{% endblock %}
