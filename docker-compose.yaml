@@ -1,0 +1,17 @@
+services:
+  generate_service:
+    image: similar_image_generator
+    build:
+      context: .
+      dockerfile: service/Dockerfile
+    ports:
+      - "8080:8080"
+  interface:
+    image: generator_interface
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    ports:
+      - "8081:8080"
+    links:
+      - "generate_service:predictor"
